@@ -1,0 +1,251 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap");
+
+/* Custom properties */
+:root {
+  --bodyFontSize: 18px;
+  --borderRadiusComponent: 2.5rem;
+  --borderRadiusParameters: 8px;
+  --resultCardGray: #bbb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: var(--bodyFontSize);
+  max-height: 100vh;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+button {
+  outline: 0;
+  border: 0;
+}
+
+/* Overall card */
+.results-summary-component {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: var(--borderRadiusComponent);
+  box-shadow: 8px 8px 25px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* Result section */
+.result-card {
+  padding: 3rem 5rem;
+  color: #fff;
+  text-align: center;
+  border-radius: var(--borderRadiusComponent);
+  background-image: linear-gradient(
+    180deg,
+    hsl(252, 100%, 67%),
+    hsl(241, 81%, 54%)
+  );
+}
+
+.result-card h1 {
+  color: #ddd;
+  margin-bottom: 2rem;
+}
+
+.result-card .result {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    180deg,
+    hsla(256, 72%, 46%, 1),
+    hsla(241, 72%, 46%, 0)
+  );
+}
+
+.result-card .result .score {
+  font-size: 5rem;
+}
+
+.result-card .result .total-points {
+  color: var(--resultCardGray);
+  font-weight: 600;
+}
+
+.result-card .assessment .remarks {
+  margin: 1rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.result-card .assessment > p:nth-child(2) {
+  color: var(--resultCardGray);
+}
+
+/* Summary section */
+.summary-section {
+  padding: 3rem;
+  text-align: center;
+}
+
+.summary-section h1 {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.parameters {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.parameters > * {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: var(--borderRadiusParameters);
+}
+
+.parameters > * .param-name {
+  margin-left: 8px;
+}
+
+.parameters > * .param-name,
+.parameters > * .param-result {
+  font-weight: 600;
+}
+
+.parameters > * .param-total-points {
+  color: #aaa;
+}
+
+.parameters > :nth-child(1) {
+  background-color: hsla(0, 100%, 67%, 0.05);
+}
+.parameters > :nth-child(2) {
+  background-color: hsla(39, 100%, 56%, 0.05);
+}
+.parameters > :nth-child(3) {
+  background-color: hsla(166, 100%, 37%, 0.05);
+}
+.parameters > :nth-child(4) {
+  background-color: hsla(234, 85%, 45%, 0.05);
+}
+
+.parameters > :nth-child(1) .param-identity {
+  color: hsla(0, 100%, 67%);
+}
+.parameters > :nth-child(2) .param-identity {
+  color: hsla(39, 100%, 56%);
+}
+.parameters > :nth-child(3) .param-identity {
+  color: hsla(166, 100%, 37%);
+}
+.parameters > :nth-child(4) .param-identity {
+  color: hsla(234, 85%, 45%);
+}
+
+button {
+  margin-top: 3rem;
+  padding: 1.25rem 1rem;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 2rem;
+  background-color: hsl(224, 30%, 27%);
+}
+
+button:hover {
+  cursor: pointer;
+  background-image: linear-gradient(
+    180deg,
+    hsl(252, 100%, 67%),
+    hsl(241, 81%, 54%)
+  );
+}
+
+button:focus {
+  background-image: linear-gradient(
+    180deg,
+    hsl(252, 100%, 67%),
+    hsl(241, 81%, 54%)
+  );
+}
+
+/* Media query for mobile */
+@media only screen and (max-width: 375px) {
+  body {
+    --bodyFontSize: 16px;
+    font-size: var(--bodyFontSize);
+    max-height: initial;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .results-summary-component {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    position: static;
+    top: initial;
+    left: initial;
+    transform: initial;
+    box-shadow: none;
+  }
+
+  .result-card {
+    --borderRadiusComponent: 2rem;
+    padding: 1rem 2rem 2rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: var(--borderRadiusComponent);
+    border-bottom-right-radius: var(--borderRadiusComponent);
+  }
+
+  .result-card h1 {
+    margin-bottom: 1rem;
+  }
+
+  .result-card .result {
+    width: 150px;
+    height: 150px;
+  }
+
+  .result-card .result .score {
+    font-size: 3rem;
+  }
+
+  .result-card .assessment .remarks {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .summary-section {
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  button {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
